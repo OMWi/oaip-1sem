@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{A0281BD4-D598-406F-8B33-77AA28D2C500}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Task3.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Integral.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Task3">
+        <MSBuild Projects="Task3.cbproj"/>
+    </Target>
+    <Target Name="Task3:Clean">
+        <MSBuild Projects="Task3.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Task3:Make">
+        <MSBuild Projects="Task3.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Integral">
+        <MSBuild Projects="Integral.cbproj"/>
+    </Target>
+    <Target Name="Integral:Clean">
+        <MSBuild Projects="Integral.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Integral:Make">
+        <MSBuild Projects="Integral.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Task3;Integral"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Task3:Clean;Integral:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Task3:Make;Integral:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

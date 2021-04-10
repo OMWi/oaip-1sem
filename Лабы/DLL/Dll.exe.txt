@@ -1,0 +1,26 @@
+#include <conio.h>
+#include <iostream>
+#include <windows.h>
+
+using namespace std;
+
+int _tmain(int argc, _TCHAR* argv[])
+{   	HINSTANCE load;
+	load = LoadLibrary("Name.dll");
+
+	typedef double (__stdcall *pointertofunc1)(double, double);
+	pointertofunc1 f1,f3;
+
+	typedef double (__stdcall *pointertofunc)(double, double, double);
+	pointertofunc2 f2;
+
+	f1=(pointertofunc1)GetProcAddress(load, "f1");
+	f2=(pointertofunc2)GetProcAddress(load, "f2");
+	f3=(pointertofunc1)GetProcAddress(load, "f3");
+
+
+	FreeLibrary(load);
+
+	getch();
+	return 0;
+}

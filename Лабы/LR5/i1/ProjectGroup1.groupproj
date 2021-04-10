@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{FA382F76-E39E-45A5-B9CF-C649F799E6AE}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="TwoDimArray.cbproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Task1.cbproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="TwoDimArray">
+        <MSBuild Projects="TwoDimArray.cbproj"/>
+    </Target>
+    <Target Name="TwoDimArray:Clean">
+        <MSBuild Projects="TwoDimArray.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="TwoDimArray:Make">
+        <MSBuild Projects="TwoDimArray.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Task1">
+        <MSBuild Projects="Task1.cbproj"/>
+    </Target>
+    <Target Name="Task1:Clean">
+        <MSBuild Projects="Task1.cbproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Task1:Make">
+        <MSBuild Projects="Task1.cbproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="TwoDimArray;Task1"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="TwoDimArray:Clean;Task1:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="TwoDimArray:Make;Task1:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

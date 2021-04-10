@@ -1,0 +1,22 @@
+#pragma hdrstop
+#pragma argsused
+
+extern "C" int _libmain(unsigned long reason)
+{
+	return 1;
+}
+
+
+
+
+extern "C" double __declspec(dllexport) __stdcall f1(double n, double m) {
+	return n+m;
+}
+
+extern "C" double __declspec(dllexport) __stdcall f2(double n, double m, double k) {
+	return n+m+k;
+}
+
+extern "C" double __declspec(dllexport) __stdcall f3(double n, double m) {
+	return n-m;
+}
